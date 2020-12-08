@@ -6,6 +6,11 @@
 
 - go to a support channel
 
+# Author
+
+- Andrew
+- Anyone Can Use It
+
 # :d
 
 - Bruh
