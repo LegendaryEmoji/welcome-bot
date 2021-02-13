@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-const db = require("wio.db");
+const db = require("old-wio.db");
 const canvas = require("discord-canvas");
 const client = new Discord.Client();
 const { Default_Prefix, Token, Color, Support, Owner, WelcomeImage, LeaveImage } = require("./config.js");
