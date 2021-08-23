@@ -1,32 +1,24 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
-  "main": "server.js",
+  "name": "welcome-bot",
+  "version": "2.0.0",
+  "description": "An advanced welcome & goodbye open-source Discord bot.",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "discord.js": "^12.5.0",
-    "fs": "^0.0.2",
-    "old-wio.db": "^4.0.10",
-    "discord-canvas": "^1.3.2",
-    "moment": "^2.29.1"
-  },
-  "engines": {
-    "node": "12.x"
+    "start": "node app.js"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://github.com/LegendaryEmoji/welcome-bot"
   },
   "license": "MIT",
   "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ]
+    "discord-js",
+    "bot",
+    "emo"
+  ],
+  "dependencies": {
+    "discord-canvas": "^1.4.1",
+    "discord.js": "^13.1.0",
+    "moment": "^2.29.1",
+    "old-wio.db": "^4.0.10"
+  }
 }

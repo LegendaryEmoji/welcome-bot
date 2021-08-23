@@ -1,58 +1,57 @@
-const { Default_Prefix, Color } = require("../../config.js");
-const Discord = require("discord.js");
 const db = require("old-wio.db");
 
-module.exports = {
+module.exports.help = {
   name: "setmessage",
   aliases: ["setmsg", "sm"],
   category: "Config",
   description: "Set The Welcome Or Leave Message When Someone Joins Or Leave!",
   usage: "Setmessage <Type> <Message>",
-  run: async (client, message, args) => {
-    
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You Don't Have Enough Permission To Execute This Command - Manage Messages");
-    
-    let Type = args[0];
-    let Welcome = ["welcome", "wel", "join"];
-    let leave = ["leave", "left"];
-    let Types = [];
-    Welcome.forEach(wel => Types.push(wel));
-    leave.forEach(leav => Types.push(leav));
-    
-    if (!Type || !Types.find(T => T === Type.toLowerCase())) return message.channel.send(`Please Give A Valid Type - Welcome, Wel, Join, Leave, Left`);
-    
-    Type = Type.toLowerCase();
-    
-    let Msg = args.slice(1).join(" ");
-    
-    if (!Msg) return message.channel.send(`Please Give Message\n\nCustom:\n<ServerName> => Server Name\n<MemberName> => Member Name\n<MemberMention> => Member Mention`);
-    
-    if (Msg.length > 1000) return message.channel.send(`Too Long Message - Limit 1000`);
-    
-    async function GetType(Type) {
-      if (Welcome.find(W => W === Type)) {
-        return "Welcome";
-      } else {
-        return "Leave";
-      };
-    };
-    
-    let Current = await GetType(Type);
-    
-    const Embed = new Discord.MessageEmbed()
-    .setColor(Color || "RANDOM")
-    .setTitle(`Sucess`)
-    .setDescription(`${Current === "Welcome" ? "Welcome" : "Leave"} Message Has Been Setted -\n${Msg}`)
-    .setFooter(`Setted By ${message.author.username}`)
-    .setTimestamp();
+  run: async ({ message, args, Color }) => {
+    if (!message.member.permissions.has("MANAGE_MESSAGES"))
+      return message.channel.send(
+        "You Don't Have Enough Permission To Execute This Command - Manage Messages"
+      );
 
-    await db.set(`${Current === "Welcome" ? "Welcome" : "Leave"}_${message.guild.id}_Msg`, Msg);
+    const Welcome = ["welcome", "wel", "join"],
+      Goodbye = ["goodbye", "leave", "left"];
 
-    try {
-        return message.channel.send(Embed);
-    } catch (error) {
-        return message.channel.send(`${Current === "Welcome" ? "Welcome" : "Leave"} Message Has Been Setted -\n${Msg}`);
-    };
+    if (
+      !args[0] ||
+      ![...Welcome, ...Goodbye].find((T) => T === args[0].toLowerCase())
+    )
+      return message.channel.send(
+        `Please Give A Valid Type - ${[...Welcome, ...Goodbye].join(", ")}`
+      );
 
-  }
+    const messageRaw = args.slice(1).join(" ");
+
+    if (!messageRaw)
+      return message.channel.send(
+        `Please Give Message\n\nCustom:\n<servername> => Server Name\n<membermame> => Member Name\n<membermention> => Member Mention`
+      );
+
+    if (messageRaw.length > 1000)
+      return message.channel.send("Too Long Message - Limit 1000");
+
+    const Current = Welcome.some((wel) => wel === args[0])
+      ? "Welcome"
+      : "Goodbye";
+
+    await db.set(
+      `${Current === "Welcome" ? "WM" : "GM"}-${message.guild.id}`,
+      messageRaw
+    );
+
+    return message.channel.send({
+      embeds: [
+        {
+          color: Color || "RANDOM",
+          title: "Success",
+          description: `${Current} Message Has Been Set -\n${messageRaw}`,
+          footer: { text: `- ${message.author.username}` },
+          timestamp: new Date(),
+        },
+      ],
+    });
+  },
 };

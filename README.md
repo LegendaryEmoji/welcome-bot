@@ -1,33 +1,29 @@
 # Information
 
-A Advanced Welcome Bot With Image Support (You Can Change Both: Welcome & Bye)
+An advanced welcome & goodbye bot with multiple images, custom prefix & custom message support
 
-- Image (Join, Leave)
+- Multiple Images (Welcome, Goodbye - Links)
 - Changeable Prefix
 - Etc
 
-### Setup
+### Installation / Setup
 
-- Download / Export This Repository & Make Sure To Install [Node.js](https://nodejs.org/en/) & [Visual Studio Code (Only If You Don't Have Any Code Editor)](https://code.visualstudio.com/)
-- Open Project In Visual Studio Code (Editor) & (Visual Studio Code) To Open Console / Terminal - **Ctrl + A**
-- In Your Project Console / Terminal Type This - **npm i**
-- And Wait For Them (Packages) To Install...
-- After Installing Done, Go To Config.js And
-- Fill Information & After That Type This In Your Console / Terminal - **_node ._** Or **_node server.js_**
-- When Bot Is Ready, You Will See A Message In Console / Terminal
-- Enjoy <3
+- Make sure you have [Node.js v16.6.0 or newer](https://nodejs.org/en/) & also a code editor if you want to make things easier (we will be using [Visual Studio Code](https://code.visualstudio.com/) editor in this installation)
+- [Download](https://github.com/LegendaryEmoji/welcome-bot/archive/refs/heads/main.zip) / Export / Clone this [respository](https://github.com/LegendaryEmoji/welcome-bot)
+- If you downloaded the zip file, please extract it using [Winrar](https://www.win-rar.com/start.html?&L=0) or some other software
+- Open bot folder in [Visual Studio Code](https://code.visualstudio.com/)
+- After opening bot folder in the editor, open terminal with **Ctrl + `** & wait for it to open
+- Type **npm i** in the terminal & wait for packages to install...
+- When it's done, go to Config.js file & fill information (check [Wiki](https://github.com/LegendaryEmoji/welcome-bot/wiki/Config))
+- Setup is finished, enjoy!
 
 ### Credits
 
 - Andrew
 
-### Donate
-
-- Thanks & Not Possible.
-
 ### Other
 
-Note: Please Make Sure You Know Basics Or I Will Report You :)
+Note: Please make sure you have some basic knowledge before changing anything in source code or you will hate yourself.
 
 - Author - Andrew
-- License - [Mit](https://github.com/LegendaryEmoji/welcome-bot/blob/main/LICENSE)
+- License - [MIT](https://github.com/LegendaryEmoji/welcome-bot/blob/main/LICENSE)
